@@ -20,7 +20,23 @@ public class JobTest {
     @Test
     public void testJobConstructorSetsAllFields(){
         Job fullGamutJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        //assertEquals(fullGamutJob).getEmployer() instanceof Employer);
-        assertEquals(fullGamutJob.getEmployer().getValue());
+
+        assertEquals(1, fullGamutJob.getId());
+        //assertTrue(fullGamutJob.getId() instanceof Id);
+
+        assertEquals("Product tester", fullGamutJob.getName());
+        assertTrue(fullGamutJob.getName() != null);
+
+        assertEquals("ACME", fullGamutJob.getEmployer().getValue());
+        assertTrue(fullGamutJob.getEmployer() instanceof Employer);
+
+        assertEquals("Desert", fullGamutJob.getLocation().getValue());
+        assertTrue(fullGamutJob.getLocation() instanceof Location);
+
+        assertEquals("Quality control", fullGamutJob.getPositionType().getValue());
+        assertTrue(fullGamutJob.getPositionType() instanceof PositionType);
+
+        assertEquals("Persistence", fullGamutJob.getCoreCompetency().getValue());
+        assertTrue(fullGamutJob.getCoreCompetency() instanceof CoreCompetency);
     }
 }
