@@ -39,4 +39,15 @@ public class JobTest {
         assertEquals("Persistence", fullGamutJob.getCoreCompetency().getValue());
         assertTrue(fullGamutJob.getCoreCompetency() instanceof CoreCompetency);
     }
+
+    @Test
+    public void testJobsForEquality(){
+        Job firstJob = new Job("Test Name", new Employer("Test Employer"), new Location("Test Location"), new PositionType("Test Position"), new CoreCompetency("Test Comp"));
+        Job secondJob = new Job("Test Name", new Employer("Test Employer"), new Location("Test Location"), new PositionType("Test Position"), new CoreCompetency("Test Comp"));
+
+        assertFalse(firstJob.equals(secondJob));
+    }
+
+
+
 }
