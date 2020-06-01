@@ -13,13 +13,14 @@ public class Job {
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
-    public Job(){
+    public Job() {
         id = nextId;
         nextId++;
     }
 
-    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this();
+        this.id = id;
         this.name = name;
         this.employer = employer;
         this.location = location;
@@ -38,6 +39,66 @@ public class Job {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        String testString =
+                        "\n" +
+                        "ID: " + this.id + "\n" +
+                        "Name: " + this.name + "\n" +
+                        "Employer: " + this.employer + "\n" +
+                        "Location: " + this.location + "\n" +
+                        "Position Type: " + this.positionType + "\n" +
+                        "Core Competency: " + this.coreCompetency + "\n" +
+                        "\n";
+
+
+        String nameString = "";
+        String employerString = "";
+        String locationString = "";
+        String positionString = "";
+        String coreString = "";
+
+        if(this.name == null || this.name.equals("")){
+            nameString = "Data not available";
+        } else {
+            nameString = this.name;
+        }
+        if(this.employer == null || this.employer.getValue() == null){
+            employerString = "Data not available";
+        } else {
+            employerString = this.employer.getValue();
+        }
+        if(this.location == null || this.location.getValue() == null){
+            locationString = "Data not available";
+        } else {
+            locationString = this.location.getValue();
+        }
+        if(this.positionType == null || this.positionType.getValue() == null){
+            positionString = "Data not available";
+        } else {
+            positionString = this.positionType.getValue();
+        }
+        if(this.coreCompetency == null || this.coreCompetency.getValue() == null){
+            coreString = "Data not available";
+        } else {
+            coreString = this.coreCompetency.getValue();
+        }
+        String emptyString = "\n" +
+                        "ID: " + this.id + "\n" +
+                        "Name: " + nameString + "\n" +
+                        "Employer: " + employerString + "\n" +
+                        "Location: " + locationString + "\n" +
+                        "Position Type: " + positionString + "\n" +
+                        "Core Competency: " + coreString + "\n" +
+                        "\n";
+
+        if(this.name == null && this.employer.getValue() == null && this.location.getValue() == null && this.positionType.getValue() == null && this.coreCompetency.getValue() == null){
+            return "OOPS! This job does not seem to exist.";
+        } else {
+            return emptyString;
+        }
     }
 
     public int getId() {
